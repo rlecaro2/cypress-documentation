@@ -3,6 +3,10 @@ title: Introduction
 ---
 The {% url 'Cypress Dashboard' https://on.cypress.io/dashboard %} is a service that gives you access to recorded tests - typically when running Cypress tests from your {% url 'CI provider' continuous-integration %}. The Dashboard provides you insight into what happened when your tests ran.
 
+<!-- textlint-disable -->
+{% video youtube ezp60FUnjGg %}
+<!-- textlint-enable -->
+
 # Features
 
 ## Organize projects
@@ -83,3 +87,15 @@ Once you log in to the {% url 'Dashboard Service' https://on.cypress.io/dashboar
 - [{% fa fa-folder-open-o %} cypress-example-kitchensink](https://dashboard.cypress.io/#/projects/4b7344)
 - [{% fa fa-folder-open-o %} cypress-example-todomvc](https://dashboard.cypress.io/#/projects/245obj)
 - [{% fa fa-folder-open-o %} cypress-example-piechopper](https://dashboard.cypress.io/#/projects/fuduzp)
+
+# Next Steps
+
+{% note info %}
+### Test and debug faster with the Cypress Dashboard
+
+- See exact point of failure of tests running in CI
+- Supercharge test times by running tests in parallel
+- Get instant test failure alerts via Slack or GitHub
+
+<a href="https://www.cypress.io/dashboard" class="button">Get Started Free</a>
+{% endnote %} 
