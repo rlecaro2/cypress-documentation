@@ -4,12 +4,12 @@ containerClass: experimental
 ---
 
 {% note warning %}
-{% fa fa-warning orange %} **This is an experimental feature. In order to use it, you must manually configure the `experimentalNetworkMocking` option to `true`.** See {% issue 687 %} for more details.
+{% fa fa-warning orange %} **This is an experimental feature. In order to use it, you must manually configure the {% url "`experimentalNetworkMocking`" experiments %} option to `true`.** See {% issue 687 %} for more details.
 {% endnote %}
 
 Use `cy.route2()` to manage the behavior of network requests at the network layer.
 
-## Comparison to cy.route()
+# Comparison to `cy.route()`
 
 Unlike {% url `cy.route()` route %}, `cy.route2()`:
 
@@ -52,8 +52,8 @@ cy.route2(/users\/\d+/)
 // Uses minimatch for matching: https://github.com/isaacs/minimatch
 cy.route2('/users/**')
 
-// https://localhost:8080/users/1b2c3            <-- matches
-// https://localhost:8080/users/profile/edit  <-- matches
+// https://localhost:8080/users/1b2c3                          <-- matches
+// https://localhost:8080/users/profile/edit                   <-- matches
 // https://localhost:8080/users/transaction?month=03&year=2020 <-- matches
 ```
 
@@ -66,19 +66,19 @@ cy.route2({
 })
 ```
 
-The following contains a complete list of available properties you can verify against:
+The following contains a complete list of available properties you can match against:
 
-Option | Default | Description
---- | --- | ---
-`auth` | `null` | Object with a `username` and `password` to match HTTP basic authentication
-`headers` | `null` | Object to match client request headers
-`hostname` | `null` | String, RegExp, or Glob to match based on requested hostname
-`method` | `'ALL'` | Match based on HTTP method (`GET`, `POST`, `PUT`, etc.)
-`path` | `null` | String, RegExp, or Glob to match on request path after the hostname, including query params
-`pathname` | `null` | String, RegExp, or Glob to match on request path after the hostname, without query params
-`port` | `null` | Match based on requested port number
-`query` | `null` | Object to match based on query parameters
-`url` | `null` | String, RegExp, or Glob to match based on full request URL
+Option | Default | Type | Description
+--- | --- | --- | ---
+`auth` | `null` | *Object* | HTTP basic authentication including `username` and `password`
+`headers` | `null` | *Object* | Client request headers
+`hostname` | `null` | *String, RegExp, Glob* | Requested hostname
+`method` | `'ALL'` | *String* | HTTP method (`GET`, `POST`, `PUT`, etc.)
+`path` | `null` | *String, RegExp, Glob* | Request path after the hostname, including query params
+`pathname` | `null` | *String, RegExp, Glob* | Request path after the hostname, without query params
+`port` | `null` | *Number* | Requested port number
+`query` | `null` | *Object* | Query parameters
+`url` | `null` | *String, RegExp, Glob* | Full request URL
 
 **{% fa fa-angle-right %} response** ***(String, Object, Array, Function)***
 
@@ -112,7 +112,7 @@ cy.route2('/users/**', (req) => {
 Match the route to a specific HTTP method (`GET`, `POST`, `PUT`, etc).
 
 {% note bolt %}
-By default, Cypress will match `ALL` requests by default.
+By default, Cypress will match `ALL` requests.
 {% endnote %}
 
 ## Yields {% helper_icon yields %}
@@ -203,11 +203,11 @@ cy.route2('/users', (req) => {
 
 ## With Stubbing
 
-If you pass a `response` to `cy.route()`, Cypress will stub the response in the request.
+If you pass a `response` to `cy.route2()`, Cypress will stub the response in the request.
 
 ### `url` as a string
 
-When passing a `string` as the `url`, the URL must match *exactly* what you've written. You'll want to use the decoded string and not include any hash encoding (ie. use `@` instead of `%40`).
+When passing a String as the `url`, the URL must match *exactly* what you've written. You'll want to use the decoded string and not include any hash encoding (ie. use `@` instead of `%40`).
 
 ```javascript
 cy.route2('https://localhost:7777/surveys/customer?email=john@doe.com', [
